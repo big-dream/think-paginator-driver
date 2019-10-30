@@ -152,7 +152,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getActivePageWrapper(string $text): string
     {
-        return '<li class="page-item active" aria-current="page"><a>' . $text . '</a></li>';
+        return '<li class="page-item active" aria-current="page"><a class="page-link">' . $text . '</a></li>';
     }
 
     /**
