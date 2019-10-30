@@ -141,7 +141,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getDisabledTextWrapper(string $text): string
     {
-        return '<li class="page-item disabled"><a class="page-link" aria-disabled="true">' . $text . '</a></li>';
+        return '<li class="page-item disabled"><span class="page-link" aria-disabled="true">' . $text . '</span></li>';
     }
 
     /**
@@ -152,7 +152,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getActivePageWrapper(string $text): string
     {
-        return '<li class="page-item active" aria-current="page"><a class="page-link">' . $text . '</a></li>';
+        return '<li class="page-item active" aria-current="page"><span class="page-link">' . $text . '</span></li>';
     }
 
     /**
