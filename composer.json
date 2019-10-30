@@ -1,0 +1,26 @@
+{
+  "name": "big-dream/think-paginator-driver",
+  "description": "ThinkPHP6分页驱动",
+  "keywords": [
+    "thinkphp",
+    "paginator",
+    "driver"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "jwj",
+      "email": "jwjbjg@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "topthink/think-orm":"6.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "bigDream\\think-paginator-driver\\": "src"
+    },
+    "files": []
+  }
+}
