@@ -4,11 +4,11 @@ namespace bigDream\thinkPaginatorDriver;
 use think\Paginator;
 
 /**
- * Bootstrap4 分页驱动
+ * Layui 分页驱动
  * @author jwj <jwjbjg@gmail.com>
  * @package bigDream\thinkPaginatorDriver
  */
-class Bootstrap4 extends Paginator
+class Layui extends Paginator
 {
     /**
      * 上一页按钮
@@ -106,13 +106,13 @@ class Bootstrap4 extends Paginator
         if ($this->hasPages()) {
             if ($this->simple) {
                 return sprintf(
-                    '<ul class="pagination">%s %s</ul>',
+                    '<div class="layui-box layui-laypage layui-laypage-default">%s %s</div>',
                     $this->getPreviousButton(),
                     $this->getNextButton()
                 );
             } else {
                 return sprintf(
-                    '<ul class="pagination">%s %s %s</ul>',
+                    '<div class="layui-box layui-laypage layui-laypage-default">%s %s %s</div>',
                     $this->getPreviousButton(),
                     $this->getLinks(),
                     $this->getNextButton()
@@ -130,7 +130,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getAvailablePageWrapper(string $url, string $page): string
     {
-        return '<li class="page-item"><a class="page-link" href="' . htmlentities($url) . '">' . $page . '</a></li>';
+        return '<a href="' . htmlentities($url) . '">' . $page . '</a>';
     }
 
     /**
@@ -141,7 +141,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getDisabledTextWrapper(string $text): string
     {
-        return '<li class="page-item disabled"><a class="page-link" aria-disabled="true">' . $text . '</a></li>';
+        return '<a class="layui-disabled" aria-disabled="true">' . $text . '</a>';
     }
 
     /**
@@ -152,7 +152,7 @@ class Bootstrap4 extends Paginator
      */
     protected function getActivePageWrapper(string $text): string
     {
-        return '<li class="page-item active" aria-current="page"><a>' . $text . '</a></li>';
+        return '<span class="layui-laypage-curr" aria-current="page"><em class="layui-laypage-em"></em><em>' . $text . '</em></span>';
     }
 
     /**
