@@ -34,5 +34,15 @@ $this->app->make(\bigDream\thinkPaginatorDriver\Bootstrap4::class, $args, true)
 $this->app->make(\bigDream\thinkPaginatorDriver\Layui::class, $args, true)
 ```
 
+### Amaze UI
+```
+$this->app->make(\bigDream\thinkPaginatorDriver\AmazeUI::class, $args, true)
+```
+
+### Foundation
+```
+$this->app->make(\bigDream\thinkPaginatorDriver\Foundation::class, $args, true)
+```
+
 ## 其它
 你所用的前端框架不在这里？欢迎提交PR，或者在Issues里告诉我。
