@@ -4,6 +4,8 @@
 
 * Bootstrap4
 * Layui
+* Amaze UI
+* Foundation
 
 ## 安装
 ```
