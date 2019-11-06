@@ -17,7 +17,6 @@ class Foundation extends Paginator
      */
     protected function getPreviousButton(string $text = "&laquo;"): string
     {
-
         if ($this->currentPage() <= 1) {
             return $this->getDisabledTextWrapper($text);
         }
