@@ -12,7 +12,7 @@ class Layui extends Paginator
 {
     /**
      * 上一页按钮
-     * @param string $text
+     * @param string $text 按钮文字
      * @return string
      */
     protected function getPreviousButton(string $text = "&laquo;"): string
@@ -30,7 +30,7 @@ class Layui extends Paginator
 
     /**
      * 下一页按钮
-     * @param string $text
+     * @param string $text 按钮文字
      * @return string
      */
     protected function getNextButton(string $text = '&raquo;'): string
@@ -98,7 +98,7 @@ class Layui extends Paginator
 
     /**
      * 渲染分页html
-     * @return mixed
+     * @return string
      */
     public function render()
     {
@@ -122,9 +122,8 @@ class Layui extends Paginator
 
     /**
      * 生成一个可点击的按钮
-     *
-     * @param  string $url
-     * @param  string $page
+     * @param  string $url 按钮链接地址
+     * @param  string $page 按钮文字
      * @return string
      */
     protected function getAvailablePageWrapper(string $url, string $page): string
@@ -134,8 +133,7 @@ class Layui extends Paginator
 
     /**
      * 生成一个禁用的按钮
-     *
-     * @param  string $text
+     * @param  string $text 按钮文字
      * @return string
      */
     protected function getDisabledTextWrapper(string $text): string
@@ -145,8 +143,7 @@ class Layui extends Paginator
 
     /**
      * 生成一个激活的按钮
-     *
-     * @param  string $text
+     * @param  string $text 按钮文字
      * @return string
      */
     protected function getActivePageWrapper(string $text): string
@@ -156,7 +153,6 @@ class Layui extends Paginator
 
     /**
      * 生成省略号按钮
-     *
      * @return string
      */
     protected function getDots(): string
@@ -166,8 +162,7 @@ class Layui extends Paginator
 
     /**
      * 批量生成页码按钮.
-     *
-     * @param  array $urls
+     * @param  array $urls 按钮链接地址
      * @return string
      */
     protected function getUrlLinks(array $urls): string
@@ -183,9 +178,8 @@ class Layui extends Paginator
 
     /**
      * 生成普通页码按钮
-     *
-     * @param  string $url
-     * @param  string    $page
+     * @param  string $url 按钮链接地址
+     * @param  string $page 按钮文字
      * @return string
      */
     protected function getPageLinkWrapper(string $url, string $page): string
