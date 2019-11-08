@@ -2,6 +2,7 @@
 
 内含以下前端框架的分页驱动
 
+* [Bootstrap](#bootstrap)
 * [Bootstrap4](#bootstrap4)
 * [Layui](#layui)
 * [Amaze UI](#amaze-ui)
@@ -16,8 +17,8 @@ composer require big-dream/think-paginator-driver
 ```
 // 设置服务注入
 \think\Paginator::maker(function (...$args) {
-    // 使用Bootstrap4分页驱动（更多驱动看下面示例）
-    return $this->app->make(\bigDream\thinkPaginatorDriver\Bootstrap4::class, $args, true);
+    // 使用Bootstrap分页驱动（更多驱动看下面示例）
+    return $this->app->make(\bigDream\thinkPaginatorDriver\Paginator::class, $args, true);
 });
 
 // 获取users表数据并进行分页
@@ -30,25 +31,25 @@ $list = \think\facade\Db::table('users')->paginate();
 ### Bootstrap4
 框架官方文档：https://getbootstrap.com/docs/4.0/components/pagination/
 ```
-$this->app->make(\bigDream\thinkPaginatorDriver\Bootstrap4::class, $args, true)
+$this->app->make(\bigDream\thinkPaginatorDriver\Paginator::class, $args, true)->style('bootstrap4')
 ```
 
 ### Layui
 框架官方文档：https://www.layui.com/doc/modules/laypage.html
 ```
-$this->app->make(\bigDream\thinkPaginatorDriver\Layui::class, $args, true)
+$this->app->make(\bigDream\thinkPaginatorDriver\Paginator::class, $args, true)->style('layui')
 ```
 
 ### Amaze UI
 框架官方文档：https://amazeui.clouddeep.cn/css/pagination/
 ```
-$this->app->make(\bigDream\thinkPaginatorDriver\AmazeUI::class, $args, true)
+$this->app->make(\bigDream\thinkPaginatorDriver\Paginator::class, $args, true)->style('amazeUI')
 ```
 
 ### Foundation
 框架官方文档：https://foundation.zurb.com/sites/docs/pagination.html
 ```
-$this->app->make(\bigDream\thinkPaginatorDriver\Foundation::class, $args, true)
+$this->app->make(\bigDream\thinkPaginatorDriver\Paginator::class, $args, true)->style('foundation')
 ```
 
 ## 其它
