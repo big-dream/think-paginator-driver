@@ -21,9 +21,7 @@ class AmazeUI extends Paginator
             return $this->getDisabledTextWrapper($text);
         }
 
-        $url = $this->url(
-            $this->currentPage() - 1
-        );
+        $url = $this->url($this->currentPage() - 1);
 
         return $this->getPageLinkWrapper($url, $text);
     }
