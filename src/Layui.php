@@ -123,12 +123,12 @@ class Layui extends Paginator
     /**
      * 生成一个可点击的按钮
      * @param  string $url 按钮链接地址
-     * @param  string $page 按钮文字
+     * @param  string $text 按钮文字
      * @return string
      */
-    protected function getAvailablePageWrapper(string $url, string $page): string
+    protected function getAvailablePageWrapper(string $url, string $text): string
     {
-        return '<a href="' . htmlentities($url) . '">' . $page . '</a>';
+        return '<a href="' . htmlentities($url) . '">' . $text . '</a>';
     }
 
     /**
@@ -169,8 +169,8 @@ class Layui extends Paginator
     {
         $html = '';
 
-        foreach ($urls as $page => $url) {
-            $html .= $this->getPageLinkWrapper($url, $page);
+        foreach ($urls as $text => $url) {
+            $html .= $this->getPageLinkWrapper($url, $text);
         }
 
         return $html;
@@ -179,15 +179,15 @@ class Layui extends Paginator
     /**
      * 生成普通页码按钮
      * @param  string $url 按钮链接地址
-     * @param  string $page 按钮文字
+     * @param  string $text 按钮文字
      * @return string
      */
-    protected function getPageLinkWrapper(string $url, string $page): string
+    protected function getPageLinkWrapper(string $url, string $text): string
     {
-        if ($this->currentPage() == $page) {
-            return $this->getActivePageWrapper($page);
+        if ($this->currentPage() == $text) {
+            return $this->getActivePageWrapper($text);
         }
 
-        return $this->getAvailablePageWrapper($url, $page);
+        return $this->getAvailablePageWrapper($url, $text);
     }
 }
