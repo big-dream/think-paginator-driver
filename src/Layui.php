@@ -1,73 +1,22 @@
 <?php
 namespace bigDream\thinkPaginatorDriver;
 
+use think\Paginator;
+
 /**
- * ThinkPHP ORM 分页驱动
+ * Layui 分页驱动
  * @author jwj <jwjbjg@gmail.com>
  * @package bigDream\thinkPaginatorDriver
  */
-class Paginator extends \think\Paginator
+class Layui extends Paginator
 {
-    /**
-     * 分页样式配置
-     * @var array
-     */
-    protected $style;
-
-    public function __construct($items, int $listRows, int $currentPage = 1, int $total = null, bool $simple = false, array $options = [])
-    {
-        parent::__construct($items, $listRows, $currentPage, $total, $simple, $options);
-
-        if (isset($options['style'])) {
-            $this->style($options['style']);
-        }
-    }
-
-    /**
-     * 渲染分页html
-     * @return string
-     */
-    public function render(): string
-    {
-        if (null === $this->style) $this->style();
-
-        if ($this->hasPages()) {
-            if ($this->simple) {
-                return sprintf($this->style['simple_container'], $this->getPreviousButton(), $this->getNextButton());
-            } else {
-                return sprintf($this->style['container'], $this->getPreviousButton(), $this->getLinks(), $this->getNextButton());
-            }
-        }
-    }
-
-    /**
-     * 设置分页样式
-     * @param string|array $config 配置名或配置参数
-     * @return $this
-     */
-    public function style($config = 'bootstrap')
-    {
-        $style = require 'style.php';
-
-        if (is_array($config)) {
-            $defaultConfig = $style['bootstrap'];
-            $this->style = array_merge($defaultConfig, $config);
-        } else {
-            $this->style = $style[$config];
-        }
-
-        return $this;
-    }
-
     /**
      * 上一页按钮
      * @param string $text 按钮文字
      * @return string
      */
-    protected function getPreviousButton(string $text = null): string
+    protected function getPreviousButton(string $text = "&laquo;"): string
     {
-        $text = $text ?? $this->style['prev_text'];
-
         if ($this->currentPage() <= 1) {
             return $this->getDisabledTextWrapper($text);
         }
@@ -82,10 +31,8 @@ class Paginator extends \think\Paginator
      * @param string $text 按钮文字
      * @return string
      */
-    protected function getNextButton(string $text = null): string
+    protected function getNextButton(string $text = '&raquo;'): string
     {
-        $text = $text ?? $this->style['next_text'];
-
         if (!$this->hasMore) {
             return $this->getDisabledTextWrapper($text);
         }
@@ -148,6 +95,30 @@ class Paginator extends \think\Paginator
     }
 
     /**
+     * 渲染分页html
+     * @return string
+     */
+    public function render()
+    {
+        if ($this->hasPages()) {
+            if ($this->simple) {
+                return sprintf(
+                    '<div class="layui-box layui-laypage layui-laypage-default">%s %s</div>',
+                    $this->getPreviousButton(),
+                    $this->getNextButton()
+                );
+            } else {
+                return sprintf(
+                    '<div class="layui-box layui-laypage layui-laypage-default">%s %s %s</div>',
+                    $this->getPreviousButton(),
+                    $this->getLinks(),
+                    $this->getNextButton()
+                );
+            }
+        }
+    }
+
+    /**
      * 生成一个可点击的按钮
      * @param  string $url 按钮链接地址
      * @param  string $text 按钮文字
@@ -155,7 +126,7 @@ class Paginator extends \think\Paginator
      */
     protected function getAvailablePageWrapper(string $url, string $text): string
     {
-        return sprintf($this->style['available_btn'], htmlentities($url), $text);
+        return '<a href="' . htmlentities($url) . '">' . $text . '</a>';
     }
 
     /**
@@ -165,7 +136,7 @@ class Paginator extends \think\Paginator
      */
     protected function getDisabledTextWrapper(string $text): string
     {
-        return sprintf($this->style['disabled_btn'], $text);
+        return '<a class="layui-disabled" aria-disabled="true">' . $text . '</a>';
     }
 
     /**
@@ -175,7 +146,7 @@ class Paginator extends \think\Paginator
      */
     protected function getActivePageWrapper(string $text): string
     {
-        return sprintf($this->style['active_btn'], $text);
+        return '<span class="layui-laypage-curr" aria-current="page"><em class="layui-laypage-em"></em><em>' . $text . '</em></span>';
     }
 
     /**
@@ -188,7 +159,7 @@ class Paginator extends \think\Paginator
     }
 
     /**
-     * 批量生成页码按钮
+     * 批量生成页码按钮.
      * @param  array $urls 按钮链接地址
      * @return string
      */
