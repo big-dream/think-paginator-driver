@@ -52,7 +52,7 @@ return [
 
 ## 已支持的前端框架
 
-### Bootstrap4
+### Bootstrap4、Bootstrap5
 框架官方文档：https://getbootstrap.com/docs/4.0/components/pagination/
 ```php
 \think\facade\App::bind('think\Paginator', \bigDream\thinkPaginatorDriver\Bootstrap4::class);
